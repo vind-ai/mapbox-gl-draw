@@ -1,3 +1,7 @@
+# Our Very Own `mapbox-gl-draw`!
+
+Now with debugging and some checks so that we don't crash all the time.
+
 # @mapbox/mapbox-gl-draw
 
 [![Build Status](https://travis-ci.org/mapbox/mapbox-gl-draw.svg?branch=main)](https://travis-ci.org/mapbox/mapbox-gl-draw)
@@ -23,26 +27,32 @@ Draw ships with CSS, make sure you include it in your build.
 **When using modules**
 
 ```js
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from "mapbox-gl";
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 ```
 
 **When using a CDN**
 
 ```html
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.3/mapbox-gl-draw.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.3/mapbox-gl-draw.js"></script>
 ```
 
 #### CSS
 
 **When using modules**
- ```js
-import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
- ```
+
+```js
+import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
+```
 
 **When using CDN**
+
 ```html
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.3/mapbox-gl-draw.css' type='text/css' />
+<link
+  rel="stylesheet"
+  href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.3/mapbox-gl-draw.css"
+  type="text/css"
+/>
 ```
 
 ### Typescript
@@ -56,13 +66,13 @@ npm install @types/mapbox__mapbox-gl-draw
 ### Example usage
 
 ```js
-mapboxgl.accessToken = 'YOUR_ACCESS_TOKEN';
+mapboxgl.accessToken = "YOUR_ACCESS_TOKEN";
 
 var map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v12',
-  center: [40, -74.50],
-  zoom: 9
+  container: "map",
+  style: "mapbox://styles/mapbox/streets-v12",
+  center: [40, -74.5],
+  zoom: 9,
 });
 
 var Draw = new MapboxDraw();
@@ -71,9 +81,9 @@ var Draw = new MapboxDraw();
 // If no position is specified the control defaults to `top-right`. See the docs
 // for more details: https://docs.mapbox.com/mapbox-gl-js/api/#map#addcontrol
 
-map.addControl(Draw, 'top-left');
+map.addControl(Draw, "top-left");
 
-map.on('load', function() {
+map.on("load", function () {
   // ALL YOUR APPLICATION CODE
 });
 ```
