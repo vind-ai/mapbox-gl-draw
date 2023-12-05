@@ -26,7 +26,7 @@ export default function render() {
         (geojson) =>
           geojson.properties.id &&
           newHotIds.indexOf(geojson.properties.id) === -1 &&
-          store.get(geojson.properties.id) !== undefined,
+          store.get(geojson.properties.id) !== undefined
       )
       .map((geojson) => geojson.properties.id);
   }
@@ -67,7 +67,17 @@ export default function render() {
 
   if (store._emitSelectionChange) {
     store.ctx.map.fire(Constants.events.SELECTION_CHANGE, {
-      features: store.getSelected().map((feature) => feature.toGeoJSON()),
+      features: store
+        .getSelected()
+        .map((feature) => {
+          if (feature === undefined) {
+            console.error("getSelected returned undefined");
+            console.error("ids: ", store.getSelectedIds());
+            return undefined;
+          }
+          return feature.toGeoJSON();
+        })
+        .filter((f) => f !== undefined),
       points: store.getSelectedCoordinates().map((coordinate) => ({
         type: Constants.geojsonTypes.FEATURE,
         properties: {},
@@ -82,7 +92,7 @@ export default function render() {
 
   if (store._deletedFeaturesToEmit.length) {
     const geojsonToEmit = store._deletedFeaturesToEmit.map((feature) =>
-      feature.toGeoJSON(),
+      feature.toGeoJSON()
     );
 
     store._deletedFeaturesToEmit = [];

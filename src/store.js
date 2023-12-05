@@ -216,13 +216,13 @@ Store.prototype.setSelected = function (featureIds, options = {}) {
     this._selectedFeatureIds
       .values()
       .filter((id) => featureIds.indexOf(id) === -1),
-    { silent: options.silent },
+    { silent: options.silent }
   );
 
   // Select any features in the new selection that were not already selected
   this.select(
     featureIds.filter((id) => !this._selectedFeatureIds.has(id)),
-    { silent: options.silent },
+    { silent: options.silent }
   );
 
   return this;
@@ -302,7 +302,7 @@ Store.prototype.setFeatureProperty = function (featureId, property, value) {
 
 function refreshSelectedCoordinates(store, options) {
   const newSelectedCoordinates = store._selectedCoordinates.filter((point) =>
-    store._selectedFeatureIds.has(point.feature_id),
+    store._selectedFeatureIds.has(point.feature_id)
   );
   if (
     store._selectedCoordinates.length !== newSelectedCoordinates.length &&
